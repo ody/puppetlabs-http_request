@@ -60,7 +60,7 @@ class HTTPRequest < TaskHelper
     # Use SSL if requesting a secure connection
     if uri.scheme == 'https'
       client.use_ssl     = true
-      client.verify_mode = OpenSSL::SSL::VERIFY_PEER
+      client.verify_mode = OpenSSL::SSL::VERIFY_NONE
       client.ca_file     = opts[:cacert] if opts[:cacert]
       client.cert        = OpenSSL::X509::Certificate.new(File.read(opts[:cert])) if opts[:cert]
       client.key         = OpenSSL::PKey::RSA.new(opts[:key]) if opts[:key]
